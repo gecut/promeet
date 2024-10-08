@@ -10,5 +10,9 @@
     "@gecut/types": "^2.2.2",
     "@gecut/utilities": "^5.4.1",
     "@types/bun": "latest"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts",
+    "build:all": "bun build ./src/**.ts"
   }
 }

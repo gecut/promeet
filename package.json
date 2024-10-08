@@ -34,8 +34,9 @@
   },
   "workspaces": ["packages/*/*"],
   "scripts": {
-    "lint": "run-s 'lint:*'",
-    "lint:ts": "eslint --config .eslintrc.yml --ignore-path .gitignore --ext .ts --ext .mjs '.'",
+    "lint": "eslint --config .eslintrc.yml --ignore-path .gitignore --ext .ts --ext .mjs '.'",
+
+    "build:test": "bun --filter '*' build:all --target bun --format esm --splitting --outdir build --minify-syntax --minify-identifiers",
 
     "format": "bun run format:prettier; bun run format:eslint",
     "format:eslint": "bun run lint:ts --fix",
