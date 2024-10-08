@@ -1,4 +1,4 @@
-import { numberUtils } from '@gecut/utilities/data-types/number.js'
+import { randomNumber } from '@gecut/utilities/data-types/number.js'
 import { uid } from '@gecut/utilities/uid.js'
 import { Schema } from 'mongoose'
 
@@ -58,7 +58,7 @@ export const $UserSchema = new Schema<
         if (this.otp?.code == null || Date.now() > new Date(this.otp.expiredAt).getTime()) delete this.otp
 
         this.otp = {
-          code: numberUtils.random.number(999999, 111111).toString(),
+          code: randomNumber(999999, 111111).toString(),
           expiredAt: new Date(Date.now() + 300000),
         }
 

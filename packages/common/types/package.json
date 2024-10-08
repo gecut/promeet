@@ -8,7 +8,7 @@
     "build:all": "bun build ./src/**.ts"
   },
   "devDependencies": {
-    "@gecut/types": "^2.2.2",
+    "@gecut/types": "^3.0.0",
     "@types/bun": "latest",
     "mongoose": "^8.7.0"
   }

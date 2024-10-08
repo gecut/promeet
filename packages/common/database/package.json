@@ -1,13 +1,14 @@
 {
-  "name": "@promeet/schemas",
+  "name": "@promeet/database",
   "private": true,
   "type": "module",
-  "main": "./src/index.ts",
   "dependencies": {
+    "@promeet/schemas": "workspace:^",
     "@promeet/types": "workspace:^",
     "mongoose": "^8.7.0"
   },
   "devDependencies": {
+    "@gecut/logger": "^2.0.0",
     "@gecut/types": "^3.0.0",
     "@gecut/utilities": "^6.0.0",
     "@types/bun": "latest"
