@@ -1,0 +1,18 @@
+semi: false
+singleQuote: true
+trailingComma: all
+arrowParens: always
+printWidth: 120
+tabWidth: 2
+useTabs: false
+endOfLine: lf
+quoteProps: as-needed
+jsxSingleQuote: false
+insertPragma: false
+requirePragma: false
+proseWrap: preserve
+htmlWhitespaceSensitivity: ignore
+overrides:
+  - files: '*.json'
+    options:
+      parser: json

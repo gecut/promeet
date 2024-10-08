@@ -1,14 +1,15 @@
-import { Schema, Types } from "mongoose";
-import {
+import { Schema, Types } from 'mongoose'
+
+import type {
   GroupInterface,
   GroupModel,
   GroupInterfaceVirtuals,
   GroupInterfaceStatics,
   GroupInterfaceInstanceMethods,
   GroupInterfaceQueryHelpers,
-} from "@promeet/types";
+} from '@promeet/types'
 
-const hour = 1000 * 60 * 60;
+const hour = 1000 * 60 * 60
 
 export const $GroupSchema = new Schema<
   GroupInterface,
@@ -19,8 +20,8 @@ export const $GroupSchema = new Schema<
   GroupInterfaceStatics
 >(
   {
-    teachers: [{ type: Types.ObjectId, ref: "user" }],
-    students: [{ type: Types.ObjectId, ref: "user" }],
+    teachers: [{ type: Types.ObjectId, ref: 'user' }],
+    students: [{ type: Types.ObjectId, ref: 'user' }],
 
     defaultSessionStartedAt: {
       type: Number,
@@ -33,5 +34,5 @@ export const $GroupSchema = new Schema<
   },
   {
     timestamps: true,
-  }
-);
+  },
+)
