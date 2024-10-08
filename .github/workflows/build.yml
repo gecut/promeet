@@ -1,0 +1,23 @@
+name: 🏗️ Build & Lint 🛠️
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  setup:
+    name: 📦 Setup Dependencies 📦
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 🐰 Setup BUN 🐰
+        uses: oven-sh/setup-bun@v1
+
+      - name: 🛒 Install Dependencies 🛒
+        run: bun install
+
+      - name: 🔨 Build Project 🔨
+        run: bun run build:test
+
+      - name: 🔍 Lint Project 🔍
+        run: bun run Lint
