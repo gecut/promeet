@@ -1,0 +1,14 @@
+{
+  "name": "@promeet/schemas",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@promeet/types": "workspace:^",
+    "mongoose": "^8.7.0"
+  },
+  "devDependencies": {
+    "@gecut/types": "^2.2.2",
+    "@gecut/utilities": "^5.4.1",
+    "@types/bun": "latest"
+  }
+}
