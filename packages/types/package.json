@@ -1,0 +1,11 @@
+{
+  "name": "@promeet/types",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "devDependencies": {
+    "@gecut/types": "^2.2.2",
+    "@types/bun": "latest",
+    "mongoose": "^8.7.0"
+  }
+}
