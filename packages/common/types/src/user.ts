@@ -1,42 +1,42 @@
-import type { Entity, Jsonize, ModelsType } from './core'
-import type { PartialDeep } from '@gecut/types'
-import type { Model } from 'mongoose'
+import type { Entity, Jsonize, ModelsType } from './core';
+import type { PartialDeep } from '@gecut/types';
+import type { Model } from 'mongoose';
 
 export interface OTPInterface {
-  code: string
-  expiredAt: Date
+  code: string;
+  expiredAt: Date;
 }
 
 export interface UserInterface extends Entity {
-  firstName: string
-  lastName: string
-  phoneNumber: string
-  email?: string
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email?: string;
 
-  token: string
+  token: string;
 
-  otp?: OTPInterface
+  otp?: OTPInterface;
 
   permissions: PartialDeep<
     Record<
       ModelsType,
       {
-        read: boolean
-        create: boolean
-        update: boolean
-        delete: boolean
+        read: boolean;
+        create: boolean;
+        update: boolean;
+        delete: boolean;
       }
     >
-  >
+  >;
 }
 
 export interface UserInterfaceQueryHelpers {}
 export interface UserInterfaceInstanceMethods {
-  makeOTP(): string
-  makeToken(): string
+  makeOTP(): string;
+  makeToken(): string;
 }
 export interface UserInterfaceVirtuals {
-  readonly fullName: string
+  readonly fullName: string;
 }
 export interface UserInterfaceStatics {}
 
@@ -45,6 +45,6 @@ export type UserModel = Model<
   UserInterfaceQueryHelpers,
   UserInterfaceInstanceMethods,
   UserInterfaceVirtuals
->
+>;
 
-export type UserData = Jsonize<UserInterface & UserInterfaceVirtuals>
+export type UserData = Jsonize<UserInterface & UserInterfaceVirtuals>;

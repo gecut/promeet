@@ -1,0 +1,5 @@
+@hostname = 0.0.0.0
+@port = 3130
+@host = {{hostname}}:{{port}}
+
+GET http://{{host}}/ HTTP/1.1

@@ -1,6 +1,6 @@
-import { randomNumber } from '@gecut/utilities/data-types/number.js'
-import { uid } from '@gecut/utilities/uid.js'
-import { Schema } from 'mongoose'
+import { randomNumber } from '@gecut/utilities/data-types/number.js';
+import { uid } from '@gecut/utilities/uid.js';
+import { Schema } from 'mongoose';
 
 import type {
   UserInterface,
@@ -9,7 +9,7 @@ import type {
   UserInterfaceStatics,
   UserInterfaceInstanceMethods,
   UserInterfaceQueryHelpers,
-} from '@promeet/types'
+} from '@promeet/types';
 
 export const $UserSchema = new Schema<
   UserInterface,
@@ -48,31 +48,32 @@ export const $UserSchema = new Schema<
     timestamps: true,
     methods: {
       makeToken() {
-        this.token = uid()
+        this.token = uid();
 
-        this.save()
+        this.save();
 
-        return this.token
+        return this.token;
       },
       makeOTP() {
-        if (this.otp?.code == null || Date.now() > new Date(this.otp.expiredAt).getTime()) delete this.otp
+        if (this.otp?.code == null || Date.now() > new Date(this.otp.expiredAt).getTime())
+          delete this.otp;
 
         this.otp = {
           code: randomNumber(999999, 111111).toString(),
           expiredAt: new Date(Date.now() + 300000),
-        }
+        };
 
-        this.save()
+        this.save();
 
-        return this.otp.code
+        return this.otp.code;
       },
     },
     virtuals: {
       fullName: {
         get() {
-          return this.firstName + ' ' + this.lastName
+          return this.firstName + ' ' + this.lastName;
         },
       },
     },
   },
-)
+);

@@ -1,13 +1,13 @@
-import type { Entity, Jsonize } from './core'
-import type { UserInterface } from './user'
-import type { Model } from 'mongoose'
+import type { Entity, Jsonize } from './core';
+import type { UserInterface } from './user';
+import type { Model } from 'mongoose';
 
 export interface GroupInterface extends Entity {
-  teachers: UserInterface[]
-  students: UserInterface[]
+  teachers: UserInterface[];
+  students: UserInterface[];
 
-  defaultSessionStartedAt: number
-  defaultSessionLength: number
+  defaultSessionStartedAt: number;
+  defaultSessionLength: number;
 }
 
 export interface GroupInterfaceQueryHelpers {}
@@ -20,6 +20,6 @@ export type GroupModel = Model<
   GroupInterfaceQueryHelpers,
   GroupInterfaceInstanceMethods,
   GroupInterfaceVirtuals
->
+>;
 
-export type GroupData = Jsonize<GroupInterface & GroupInterfaceVirtuals>
+export type GroupData = Jsonize<GroupInterface & GroupInterfaceVirtuals>;

@@ -1,0 +1,20 @@
+{
+  "name": "users",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build ./src/index.ts",
+    "build:all": "bun build ./src/**.ts"
+  },
+  "dependencies": {
+    "hono": "^4.6.3"
+  },
+  "devDependencies": {
+    "@gecut/logger": "^2.0.0",
+    "@gecut/types": "^3.0.0",
+    "@gecut/utilities": "^6.0.0",
+    "@promeet/database": "workspace:*",
+    "@promeet/schemas": "workspace:*",
+    "@promeet/types": "workspace:*",
+    "@types/bun": "latest"
+  }
+}

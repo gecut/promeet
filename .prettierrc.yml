@@ -1,8 +1,8 @@
-semi: false
+semi: true
 singleQuote: true
 trailingComma: all
 arrowParens: always
-printWidth: 120
+printWidth: 100
 tabWidth: 2
 useTabs: false
 endOfLine: lf
@@ -10,7 +10,7 @@ quoteProps: as-needed
 jsxSingleQuote: false
 insertPragma: false
 requirePragma: false
-proseWrap: preserve
+proseWrap: always
 htmlWhitespaceSensitivity: ignore
 overrides:
   - files: '*.json'

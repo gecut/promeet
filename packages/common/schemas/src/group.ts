@@ -1,4 +1,4 @@
-import { Schema, Types } from 'mongoose'
+import { Schema, Types } from 'mongoose';
 
 import type {
   GroupInterface,
@@ -7,9 +7,9 @@ import type {
   GroupInterfaceStatics,
   GroupInterfaceInstanceMethods,
   GroupInterfaceQueryHelpers,
-} from '@promeet/types'
+} from '@promeet/types';
 
-const hour = 1000 * 60 * 60
+const hour = 1000 * 60 * 60;
 
 export const $GroupSchema = new Schema<
   GroupInterface,
@@ -35,4 +35,4 @@ export const $GroupSchema = new Schema<
   {
     timestamps: true,
   },
-)
+);

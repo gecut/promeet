@@ -2,6 +2,7 @@
   "name": "@promeet/database",
   "private": true,
   "type": "module",
+  "main": "./src/index.ts",
   "dependencies": {
     "@promeet/schemas": "workspace:^",
     "@promeet/types": "workspace:^",

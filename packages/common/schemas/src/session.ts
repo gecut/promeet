@@ -1,4 +1,4 @@
-import { Schema, Types } from 'mongoose'
+import { Schema, Types } from 'mongoose';
 
 import type {
   SessionInterface,
@@ -7,7 +7,7 @@ import type {
   SessionInterfaceStatics,
   SessionInterfaceInstanceMethods,
   SessionInterfaceQueryHelpers,
-} from '@promeet/types'
+} from '@promeet/types';
 
 export const $SessionSchema = new Schema<
   SessionInterface,
@@ -21,11 +21,11 @@ export const $SessionSchema = new Schema<
     startedAt: {
       type: Date,
       default: () => {
-        const now = new Date()
+        const now = new Date();
 
-        now.setHours(18)
+        now.setHours(18);
 
-        return now
+        return now;
       },
     },
     length: {
@@ -39,20 +39,20 @@ export const $SessionSchema = new Schema<
     timestamps: true,
     methods: {
       async makeFromGroup(startDate) {
-        const _this = await this.populate('group')
+        const _this = await this.populate('group');
 
-        this.startedAt = new Date(startDate + _this.group.defaultSessionStartedAt)
-        this.length = _this.group.defaultSessionLength
+        this.startedAt = new Date(startDate + _this.group.defaultSessionStartedAt);
+        this.length = _this.group.defaultSessionLength;
 
-        return await this.save()
+        return await this.save();
       },
     },
     virtuals: {
       endedAt: {
         get() {
-          return new Date(this.startedAt.getTime() + this.length)
+          return new Date(this.startedAt.getTime() + this.length);
         },
       },
     },
   },
-)
+);
