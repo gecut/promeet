@@ -1,6 +1,6 @@
 import { randomNumber } from '@gecut/utilities/data-types/number.js';
 import { uid } from '@gecut/utilities/uid.js';
-import { Schema } from 'mongoose';
+import { Schema, Types } from 'mongoose';
 
 import type {
   UserInterface,
@@ -43,6 +43,9 @@ export const $UserSchema = new Schema<
       code: { type: String },
       expiredAt: { type: Date },
     },
+
+    teaching: [{ type: Types.ObjectId, ref: 'group' }],
+    studying: [{ type: Types.ObjectId, ref: 'group' }],
   },
   {
     timestamps: true,
@@ -66,6 +69,92 @@ export const $UserSchema = new Schema<
         this.save();
 
         return this.otp.code;
+      },
+      async calculateAttendanceProgress(groupId) {
+        const { teaching, studying } = await this.populate([
+          {
+            path: 'teaching',
+            populate: {
+              path: 'sessions',
+            },
+          },
+          {
+            path: 'studying',
+            populate: {
+              path: 'sessions',
+            },
+          },
+        ]);
+
+        const result = {
+          sessions: 0,
+          presences: 0,
+          absences: 0,
+          percentage: 0,
+        };
+
+        for (const group of teaching.concat(studying)) {
+          if (groupId != null && groupId !== group._id.toString()) continue;
+
+          for (const session of group.sessions) {
+            const delay = session.attendance[this._id.toString()];
+
+            if (delay == null) continue;
+
+            if (delay < session.length) result.presences++;
+            else result.absences++;
+
+            result.sessions++;
+          }
+        }
+
+        if (result.sessions > 0)
+          result.percentage = Math.round((100 * result.presences) / result.sessions);
+
+        return result;
+      },
+      async calculateDelaysStats(groupId) {
+        const { teaching, studying } = await this.populate([
+          {
+            path: 'teaching',
+            populate: {
+              path: 'sessions',
+            },
+          },
+          {
+            path: 'studying',
+            populate: {
+              path: 'sessions',
+            },
+          },
+        ]);
+
+        const result = {
+          sessions: 0,
+          delays: 0,
+          percentage: 0,
+        };
+
+        for (const group of teaching.concat(studying)) {
+          if (groupId != null && groupId !== group._id.toString()) continue;
+
+          for (const session of group.sessions) {
+            const delay = session.attendance[this._id.toString()];
+
+            if (delay == null) continue;
+
+            result.delays += delay;
+            result.sessions += session.length;
+          }
+        }
+
+        if (result.sessions > 0) {
+          result.percentage = Math.round(
+            (100 * (result.sessions - result.delays)) / result.sessions,
+          );
+        }
+
+        return result;
       },
     },
     virtuals: {
