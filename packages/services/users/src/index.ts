@@ -17,10 +17,12 @@ db.connect()
       hostname: config.secret.host,
     });
 
+    // eslint-disable-next-line no-console
     console.log('externalServer', {
       url: externalServer.url.toString(),
     });
 
+    // eslint-disable-next-line no-console
     console.log('internalServer', {
       url: internalServer.url.toString(),
     });
