@@ -43,12 +43,36 @@ rules:
     - capIsNewExceptionPattern: Mixin$
   brace-style:
     - error
-    - stroustrup
+    - 1tbs
     - allowSingleLine: true
   '@typescript-eslint/consistent-type-imports':
     - error
     - fixStyle: separate-type-imports
       prefer: type-imports
+  curly:
+    - error
+    - multi-or-nest
+  for-direction: error
+  no-class-assign: error
+  no-await-in-loop: error
+  no-compare-neg-zero: error
+  no-const-assign: error
+  no-constant-condition: error
+  no-constant-binary-expression: error
+  complexity: error
+  capitalized-comments: error
+  default-case-last: error
+  dot-notation:
+    - warn
+  no-console:
+    - warn
+  arrow-body-style:
+    - error
+    - as-needed
+  eqeqeq:
+    - error
+    - always
+    - 'null': ignore
   indent:
     - error
     - 2
