@@ -29,8 +29,7 @@ export class Database {
 
       try {
         return (this.connector = await mongoose.connect(this.uri, this.options));
-      }
-      catch (error) {
+      } catch (error) {
         return this.logger.error('connect', 'connect_failed', error);
       }
     }
