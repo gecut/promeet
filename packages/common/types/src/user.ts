@@ -1,4 +1,5 @@
 import type { Entity, Jsonize, ModelsType } from './core';
+import type { GroupInterface } from './group';
 import type { PartialDeep } from '@gecut/types';
 import type { Model } from 'mongoose';
 
@@ -28,12 +29,26 @@ export interface UserInterface extends Entity {
       }
     >
   >;
+
+  teaching: GroupInterface[];
+  studying: GroupInterface[];
 }
 
 export interface UserInterfaceQueryHelpers {}
 export interface UserInterfaceInstanceMethods {
   makeOTP(): string;
   makeToken(): string;
+  calculateAttendanceProgress(groupId?: string): Promise<{
+    sessions: number;
+    presences: number;
+    absences: number;
+    percentage: number;
+  }>;
+  calculateDelaysStats(groupId?: string): Promise<{
+    sessions: number; // * To Minutes
+    delays: number; // * To Minutes
+    percentage: number;
+  }>;
 }
 export interface UserInterfaceVirtuals {
   readonly fullName: string;

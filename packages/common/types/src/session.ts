@@ -1,17 +1,26 @@
 import type { Entity, Jsonize } from './core';
-import type { GroupInterface } from './group';
+import type { GroupInterface, GroupTasksInterface } from './group';
 import type { Model } from 'mongoose';
+
+export interface SessionTasksInterface extends GroupTasksInterface {
+  done: boolean;
+}
 
 export interface SessionInterface extends Entity {
   startedAt: Date;
   length: number;
 
+  summary: string;
+
   group: GroupInterface;
+  attendance: Record<string, number>;
+
+  tasks: SessionTasksInterface[];
 }
 
 export interface SessionInterfaceQueryHelpers {}
 export interface SessionInterfaceInstanceMethods {
-  makeFromGroup(startDate: number): Promise<SessionInterface>;
+  setDefaults(startDate: number): Promise<SessionInterface>;
 }
 export interface SessionInterfaceVirtuals {
   readonly endedAt: Date;
