@@ -1,3 +1,29 @@
 {
-  "cSpell.words": ["gecut", "hono", "Jsonify", "Jsonize", "promeet", "Virtuals", "Zamanian"]
+  "cSpell.language": "en,fa,fa-IR",
+  "cSpell.words": ["gecut", "hono", "Jsonify", "Jsonize", "promeet", "Virtuals", "Zamanian"],
+  "npm.packageManager": "bun",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.wordWrapColumn": 120,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "files.exclude": {
+    "**/*.map": true,
+    "**/*.d.ts": true,
+    "**/*.tsbuildinfo": true
+  },
+  "files.associations": {
+    "*.mt": "routeros",
+    "*.conf.template": "nginx",
+    "ssh_config": "ssh_config",
+    "*.njk": "html",
+    "ssh-config": "ssh_config"
+  },
+  "git.autoStash": true,
+  "search.exclude": {
+    "node_modules": true,
+    "bun.lockb": true
+  }
 }
