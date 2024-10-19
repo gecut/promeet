@@ -74,6 +74,7 @@ export class Database {
         lastName: 'زمانیان',
         phoneNumber: '09155595488',
         email: 'dev@mm25zamanian.ir',
+        
       }),
     ]);
 

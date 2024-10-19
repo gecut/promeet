@@ -1,16 +1,19 @@
+import { GecutLogger } from '@gecut/logger';
 import { env } from '@gecut/utilities/env.js';
 import { Database } from '@promeet/database';
 import { Hono } from 'hono';
 import { bearerAuth } from 'hono/bearer-auth';
-import { logger } from 'hono/logger';
+import { logger as honoLogger } from 'hono/logger';
 
 import type { UserData } from '@promeet/types';
 
+export const logger = new GecutLogger('users.service');
 export const $exHono = new Hono<{ Variables: { user: UserData } }>();
+export const $inHonoLogger = logger.sub('internal');
 export const $inHono = new Hono();
 export const db = new Database(
   'mongodb://root:m9zpx6DSV8Y1jNJFOlOaJuQHbAK63BTL@3c9eb54a-69d7-43bd-a87d-3478585093bc.hsvc.ir:30242/',
-  undefined,
+  logger.sub('db'),
   {
     appName: 'users-services',
   },
@@ -27,8 +30,8 @@ export const config = {
   },
 };
 
-$exHono.use(logger());
-$inHono.use(logger());
+$exHono.use(honoLogger(logger.property));
+$inHono.use(honoLogger($inHonoLogger.property));
 
 $inHono.use('/secrets/*', bearerAuth({ token: config.secret.token }));
 

@@ -1,4 +1,4 @@
-import { uid } from '@gecut/utilities/uid';
+import { uid } from '@gecut/utilities/uid.js';
 import { Schema, Types } from 'mongoose';
 
 import type {
